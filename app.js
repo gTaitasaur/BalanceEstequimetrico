@@ -1,14 +1,3 @@
-/**
- * APP.JS - Lógica de la interfaz de usuario
- * 
- * Este archivo maneja:
- * - Interacción con el formulario
- * - Generación dinámica de campos de reactivos
- * - Validación de entradas del usuario
- * - Mostrar resultados formateados
- * - Mensajes de error y ayuda
- */
-
 // ============================================================
 // SECCIÓN 1: ELEMENTOS DEL DOM
 // ============================================================

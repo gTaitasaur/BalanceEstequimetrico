@@ -1,32 +1,6 @@
-/**
- * QUIMICA.JS - Funciones de cálculo estequiométrico
- * 
- * Este archivo contiene todas las funciones necesarias para:
- * - Parsear fórmulas químicas (ej: H2O, Ca(OH)2)
- * - Parsear ecuaciones químicas (ej: 2H2 + O2 -> 2H2O)
- * - Verificar si una ecuación está balanceada
- * - Calcular masas molares
- * - Convertir entre masa y moles
- * - Determinar reactivo limitante y en exceso
- * - Calcular rendimiento y pureza
- */
-
 // ============================================================
 // SECCIÓN 1: PARSEO DE FÓRMULAS Y ECUACIONES
 // ============================================================
-
-/**
- * Parsea una fórmula química y devuelve un objeto con la cantidad de cada elemento.
- * Soporta paréntesis y subíndices.
- * 
- * Ejemplos:
- *   "H2O"      -> { H: 2, O: 1 }
- *   "Ca(OH)2"  -> { Ca: 1, O: 2, H: 2 }
- *   "Fe2O3"    -> { Fe: 2, O: 3 }
- * 
- * @param {string} formula - La fórmula química a parsear
- * @returns {Object} - Objeto con elementos como claves y cantidades como valores
- */
 function parsearFormula(formula) {
     const resultado = {};
     const pila = [resultado]; // Pila para manejar paréntesis
@@ -99,16 +73,6 @@ function parsearFormula(formula) {
     return resultado;
 }
 
-/**
- * Parsea un compuesto con su coeficiente estequiométrico.
- * 
- * Ejemplos:
- *   "2H2O"    -> { coeficiente: 2, formula: "H2O", elementos: { H: 2, O: 1 } }
- *   "Fe2O3"   -> { coeficiente: 1, formula: "Fe2O3", elementos: { Fe: 2, O: 3 } }
- * 
- * @param {string} compuesto - Compuesto con posible coeficiente
- * @returns {Object} - Objeto con coeficiente, fórmula y elementos
- */
 function parsearCompuesto(compuesto) {
     compuesto = compuesto.trim();
 
@@ -132,20 +96,6 @@ function parsearCompuesto(compuesto) {
     };
 }
 
-/**
- * Parsea una ecuación química completa.
- * Soporta los separadores: ->, →, =, y +
- * 
- * Ejemplo:
- *   "2H2 + O2 -> 2H2O"
- *   Resultado: {
- *     reactivos: [{ coeficiente: 2, formula: "H2", elementos: {...} }, ...],
- *     productos: [{ coeficiente: 2, formula: "H2O", elementos: {...} }]
- *   }
- * 
- * @param {string} ecuacion - La ecuación química completa
- * @returns {Object} - Objeto con arrays de reactivos y productos
- */
 function parsearEcuacion(ecuacion) {
     // Normalizar la flecha de reacción
     ecuacion = ecuacion.replace(/→/g, '->').replace(/=/g, '->');
@@ -173,13 +123,6 @@ function parsearEcuacion(ecuacion) {
 // ============================================================
 // SECCIÓN 2: VALIDACIÓN DE BALANCE
 // ============================================================
-
-/**
- * Cuenta el total de átomos de cada elemento en un lado de la ecuación.
- * 
- * @param {Array} compuestos - Array de compuestos parseados
- * @returns {Object} - Objeto con conteo total de cada elemento
- */
 function contarAtomos(compuestos) {
     const conteo = {};
 
@@ -197,14 +140,6 @@ function contarAtomos(compuestos) {
     return conteo;
 }
 
-/**
- * Verifica si una ecuación química está balanceada.
- * Una ecuación está balanceada si la cantidad de átomos de cada elemento
- * es igual en ambos lados de la ecuación.
- * 
- * @param {string} ecuacion - La ecuación química a verificar
- * @returns {Object} - { balanceada: boolean, detalles: Object }
- */
 function verificarBalance(ecuacion) {
     const parseada = parsearEcuacion(ecuacion);
 
@@ -241,12 +176,6 @@ function verificarBalance(ecuacion) {
     };
 }
 
-/**
- * Valida que todos los elementos en la fórmula existan en la tabla periódica.
- * 
- * @param {string} formula - La fórmula a validar
- * @returns {Object} - { valida: boolean, elementosInvalidos: Array }
- */
 function validarElementos(formula) {
     const elementos = parsearFormula(formula);
     const invalidos = [];
@@ -263,12 +192,6 @@ function validarElementos(formula) {
     };
 }
 
-/**
- * Valida una ecuación completa (sintaxis y elementos).
- * 
- * @param {string} ecuacion - La ecuación a validar
- * @returns {Object} - { valida: boolean, error: string|null }
- */
 function validarEcuacion(ecuacion) {
     try {
         const parseada = parsearEcuacion(ecuacion);
@@ -302,13 +225,6 @@ function validarEcuacion(ecuacion) {
 // ============================================================
 // SECCIÓN 3: CÁLCULOS DE MASA MOLAR Y CONVERSIONES
 // ============================================================
-
-/**
- * Calcula la masa molar de un compuesto.
- * 
- * @param {string} formula - La fórmula del compuesto
- * @returns {number} - Masa molar en g/mol
- */
 function calcularMasaMolar(formula) {
     const elementos = parsearFormula(formula);
     let masaTotal = 0;
@@ -323,25 +239,11 @@ function calcularMasaMolar(formula) {
     return masaTotal;
 }
 
-/**
- * Convierte masa en gramos a moles.
- * 
- * @param {number} masa - Masa en gramos
- * @param {string} formula - Fórmula del compuesto
- * @returns {number} - Cantidad en moles
- */
 function masaAMoles(masa, formula) {
     const masaMolar = calcularMasaMolar(formula);
     return masa / masaMolar;
 }
 
-/**
- * Convierte moles a masa en gramos.
- * 
- * @param {number} moles - Cantidad en moles
- * @param {string} formula - Fórmula del compuesto
- * @returns {number} - Masa en gramos
- */
 function molesAMasa(moles, formula) {
     const masaMolar = calcularMasaMolar(formula);
     return moles * masaMolar;
@@ -350,17 +252,6 @@ function molesAMasa(moles, formula) {
 // ============================================================
 // SECCIÓN 4: CÁLCULOS ESTEQUIOMÉTRICOS
 // ============================================================
-
-/**
- * Encuentra el reactivo limitante en una reacción química.
- * 
- * El reactivo limitante es aquel que se consume primero y determina
- * la cantidad máxima de producto que se puede formar.
- * 
- * @param {string} ecuacion - La ecuación química balanceada
- * @param {Array} datosReactivos - Array de objetos con { formula, moles, pureza }
- * @returns {Object} - Información sobre el reactivo limitante
- */
 function encontrarReactivoLimitante(ecuacion, datosReactivos) {
     const parseada = parsearEcuacion(ecuacion);
 
@@ -391,14 +282,6 @@ function encontrarReactivoLimitante(ecuacion, datosReactivos) {
     };
 }
 
-/**
- * Calcula los reactivos en exceso y cuánto sobra de cada uno.
- * 
- * @param {string} ecuacion - La ecuación química balanceada
- * @param {Array} datosReactivos - Array de objetos con { formula, moles, pureza }
- * @param {Object} limitante - Información del reactivo limitante
- * @returns {Array} - Array de reactivos en exceso con cantidades sobrantes
- */
 function calcularExceso(ecuacion, datosReactivos, limitante) {
     const parseada = parsearEcuacion(ecuacion);
     const excesos = [];
@@ -430,13 +313,6 @@ function calcularExceso(ecuacion, datosReactivos, limitante) {
     return excesos;
 }
 
-/**
- * Calcula el rendimiento teórico de cada producto.
- * 
- * @param {string} ecuacion - La ecuación química balanceada
- * @param {Object} limitante - Información del reactivo limitante
- * @returns {Array} - Array de productos con rendimiento teórico
- */
 function calcularRendimientoTeorico(ecuacion, limitante) {
     const parseada = parsearEcuacion(ecuacion);
     const productos = [];
@@ -457,26 +333,11 @@ function calcularRendimientoTeorico(ecuacion, limitante) {
     return productos;
 }
 
-/**
- * Calcula el porcentaje de rendimiento.
- * 
- * @param {number} rendimientoReal - Cantidad real obtenida (en gramos o moles)
- * @param {number} rendimientoTeorico - Cantidad teórica esperada (mismas unidades)
- * @returns {number} - Porcentaje de rendimiento
- */
 function calcularPorcentajeRendimiento(rendimientoReal, rendimientoTeorico) {
     if (rendimientoTeorico === 0) return 0;
     return (rendimientoReal / rendimientoTeorico) * 100;
 }
 
-/**
- * Realiza todos los cálculos estequiométricos para una reacción.
- * 
- * @param {string} ecuacion - La ecuación química balanceada
- * @param {Array} datosReactivos - Array de { formula, masa?, moles?, pureza }
- * @param {Object} datosProductoReal - { formula, masaReal?, molesReales? } (opcional)
- * @returns {Object} - Objeto con todos los resultados
- */
 function calcularEstequiometria(ecuacion, datosReactivos, datosProductoReal = null) {
     // Validar la ecuación
     const validacion = validarEcuacion(ecuacion);
@@ -562,14 +423,6 @@ function calcularEstequiometria(ecuacion, datosReactivos, datosProductoReal = nu
 // ============================================================
 // SECCIÓN 5: FUNCIONES DE UTILIDAD
 // ============================================================
-
-/**
- * Formatea un número para mostrar con precisión adecuada.
- * 
- * @param {number} numero - El número a formatear
- * @param {number} decimales - Cantidad de decimales (por defecto 4)
- * @returns {string} - Número formateado
- */
 function formatearNumero(numero, decimales = 4) {
     if (numero === null || numero === undefined || isNaN(numero)) {
         return '-';
