@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Calculadora de estequiometría química. Calcula reactivo limitante, exceso, rendimiento y más.">
+    <title>Calculadora de Estequiometría</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+    <!-- Fondo animado -->
+    <div class="fondo-animado">
+        <div class="molecula molecula-1"></div>
+        <div class="molecula molecula-2"></div>
+        <div class="molecula molecula-3"></div>
+    </div>
+
+    <!-- Contenedor principal -->
+    <div class="contenedor-principal">
+        <!-- Encabezado -->
+        <header class="encabezado">
+            <h1>⚗️ Calculadora de Estequiometría</h1>
+        </header>
+
+        <!-- Sección: Ingresar Ecuación -->
+        <section class="seccion tarjeta">
+
+            <div class="seccion-contenido">
+                <div class="instrucciones">
+                    <h4>IMPORTANTE:</h4>
+                    <ul>
+                        <li>Guíate por los ejemplos de abajo para escribir la ecuación, o podría arrojar un mal
+                            resultado</li>
+                        <li>Usa símbolos químicos con mayúscula inicial (H, O, Ca, Fe)</li>
+                        <li>Los subíndices se escriben como números: H<sub>2</sub>O se escribe H2O</li>
+                        <li>Los coeficientes van al inicio del compuesto: 2H2O </li>
+                        <li>Se separan los compuestos con +</li>
+                        <li>Usa -> o → para separar reactivos y productos</li>
+                        <li>Se pueden usar paréntesis: Ca(OH)2</li>
+                    </ul>
+                </div>
+                <div class="seccion-encabezado">
+                    <h2>1. Ingresa la Ecuación Química</h2>
+                </div>
+                <div class="ejemplos">
+                    <h4>💡 Ejemplos para probar:</h4>
+                    <div class="lista-ejemplos">
+                        <button class="boton-ejemplo" onclick="cargarEjemplo('2H2 + O2 -> 2H2O')">
+                            2H₂ + O₂ → 2H₂O
+                        </button>
+                        <button class="boton-ejemplo" onclick="cargarEjemplo('N2 + 3H2 -> 2NH3')">
+                            N₂ + 3H₂ → 2NH₃
+                        </button>
+                        <button class="boton-ejemplo" onclick="cargarEjemplo('CH4 + 2O2 -> CO2 + 2H2O')">
+                            CH₄ + 2O₂ → CO₂ + 2H₂O
+                        </button>
+                        <button class="boton-ejemplo" onclick="cargarEjemplo('2Fe + 3Cl2 -> 2FeCl3')">
+                            2Fe + 3Cl₂ → 2FeCl₃
+                        </button>
+                        <button class="boton-ejemplo" onclick="cargarEjemplo('CaCO3 -> CaO + CO2')">
+                            CaCO₃ → CaO + CO₂
+                        </button>
+                    </div>
+                </div>
+
+                <form id="formulario-ecuacion" class="formulario-ecuacion">
+                    <div class="campo-ecuacion">
+                        <label for="input-ecuacion">Ecuación química:</label>
+                        <input type="text" id="input-ecuacion" placeholder="Ej: 2H2 + O2 -> 2H2O" autocomplete="off"
+                            spellcheck="false">
+                    </div>
+
+                    <button type="button" id="boton-validar" class="boton-primario">
+                        ✓ Validar Ecuación
+                    </button>
+                </form>
+
+                <!-- Mensaje de estado -->
+                <br>
+                <div id="mensaje-estado" class="mensaje-estado" style="display: none;"></div>
+
+            </div>
+        </section>
+
+        <!-- Sección: Datos de Reactivos -->
+        <section id="seccion-reactivos" class="seccion tarjeta" style="display: none;">
+            <div class="seccion-encabezado">
+                <h2>2️. Ingresa los Datos de los Reactivos</h2>
+            </div>
+
+            <div class="seccion-contenido">
+                <p class="descripcion-seccion">
+                    Para cada reactivo, puedes ingresar la cantidad en gramos o en moles.
+                    También puedes especificar la pureza si el reactivo no es 100% puro.
+                </p>
+
+                <div id="contenedor-reactivos">
+                    <!-- Los campos de reactivos se generan dinámicamente -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección: Resultados -->
+        <section id="seccion-resultados" class="seccion tarjeta" style="display: none;">
+            <div class="seccion-encabezado">
+                <h2>3️. Resultados del Cálculo</h2>
+            </div>
+
+            <div class="seccion-contenido">
+                <div id="contenedor-resultados">
+                    <!-- Los resultados se generan dinámicamente -->
+                </div>
+            </div>
+        </section>
+        <!-- Pie de página -->
+        <footer class="pie-pagina">
+            <p class="creditos">Base de datos con los 118 elementos de la tabla periódica</p>
+            <p class="creditos">QUÍMICA APLICADA A LA INGENIERÍA | tNQBT1003-02</p>
+            <p class="creditos">Christian Loyola Soto </p>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="elementos.js"></script>
+    <script src="quimica.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

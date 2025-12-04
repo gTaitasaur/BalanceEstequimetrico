@@ -1,0 +1,145 @@
+/**
+ * ELEMENTOS.JS - Base de datos completa de la tabla periódica
+ * 
+ * Contiene todos los 118 elementos químicos con sus masas atómicas.
+ * Las masas atómicas están en unidades de masa atómica (u o uma).
+ * 
+ * Estructura: { símbolo: { nombre, masaAtomica } }
+ */
+
+const ELEMENTOS = {
+    // Período 1
+    H:  { nombre: "Hidrógeno",    masaAtomica: 1.008 },
+    He: { nombre: "Helio",        masaAtomica: 4.0026 },
+
+    // Período 2
+    Li: { nombre: "Litio",        masaAtomica: 6.94 },
+    Be: { nombre: "Berilio",      masaAtomica: 9.0122 },
+    B:  { nombre: "Boro",         masaAtomica: 10.81 },
+    C:  { nombre: "Carbono",      masaAtomica: 12.011 },
+    N:  { nombre: "Nitrógeno",    masaAtomica: 14.007 },
+    O:  { nombre: "Oxígeno",      masaAtomica: 15.999 },
+    F:  { nombre: "Flúor",        masaAtomica: 18.998 },
+    Ne: { nombre: "Neón",         masaAtomica: 20.180 },
+
+    // Período 3
+    Na: { nombre: "Sodio",        masaAtomica: 22.990 },
+    Mg: { nombre: "Magnesio",     masaAtomica: 24.305 },
+    Al: { nombre: "Aluminio",     masaAtomica: 26.982 },
+    Si: { nombre: "Silicio",      masaAtomica: 28.085 },
+    P:  { nombre: "Fósforo",      masaAtomica: 30.974 },
+    S:  { nombre: "Azufre",       masaAtomica: 32.06 },
+    Cl: { nombre: "Cloro",        masaAtomica: 35.45 },
+    Ar: { nombre: "Argón",        masaAtomica: 39.948 },
+
+    // Período 4
+    K:  { nombre: "Potasio",      masaAtomica: 39.098 },
+    Ca: { nombre: "Calcio",       masaAtomica: 40.078 },
+    Sc: { nombre: "Escandio",     masaAtomica: 44.956 },
+    Ti: { nombre: "Titanio",      masaAtomica: 47.867 },
+    V:  { nombre: "Vanadio",      masaAtomica: 50.942 },
+    Cr: { nombre: "Cromo",        masaAtomica: 51.996 },
+    Mn: { nombre: "Manganeso",    masaAtomica: 54.938 },
+    Fe: { nombre: "Hierro",       masaAtomica: 55.845 },
+    Co: { nombre: "Cobalto",      masaAtomica: 58.933 },
+    Ni: { nombre: "Níquel",       masaAtomica: 58.693 },
+    Cu: { nombre: "Cobre",        masaAtomica: 63.546 },
+    Zn: { nombre: "Zinc",         masaAtomica: 65.38 },
+    Ga: { nombre: "Galio",        masaAtomica: 69.723 },
+    Ge: { nombre: "Germanio",     masaAtomica: 72.630 },
+    As: { nombre: "Arsénico",     masaAtomica: 74.922 },
+    Se: { nombre: "Selenio",      masaAtomica: 78.971 },
+    Br: { nombre: "Bromo",        masaAtomica: 79.904 },
+    Kr: { nombre: "Kriptón",      masaAtomica: 83.798 },
+
+    // Período 5
+    Rb: { nombre: "Rubidio",      masaAtomica: 85.468 },
+    Sr: { nombre: "Estroncio",    masaAtomica: 87.62 },
+    Y:  { nombre: "Itrio",        masaAtomica: 88.906 },
+    Zr: { nombre: "Circonio",     masaAtomica: 91.224 },
+    Nb: { nombre: "Niobio",       masaAtomica: 92.906 },
+    Mo: { nombre: "Molibdeno",    masaAtomica: 95.95 },
+    Tc: { nombre: "Tecnecio",     masaAtomica: 98 },
+    Ru: { nombre: "Rutenio",      masaAtomica: 101.07 },
+    Rh: { nombre: "Rodio",        masaAtomica: 102.91 },
+    Pd: { nombre: "Paladio",      masaAtomica: 106.42 },
+    Ag: { nombre: "Plata",        masaAtomica: 107.87 },
+    Cd: { nombre: "Cadmio",       masaAtomica: 112.41 },
+    In: { nombre: "Indio",        masaAtomica: 114.82 },
+    Sn: { nombre: "Estaño",       masaAtomica: 118.71 },
+    Sb: { nombre: "Antimonio",    masaAtomica: 121.76 },
+    Te: { nombre: "Telurio",      masaAtomica: 127.60 },
+    I:  { nombre: "Yodo",         masaAtomica: 126.90 },
+    Xe: { nombre: "Xenón",        masaAtomica: 131.29 },
+
+    // Período 6
+    Cs: { nombre: "Cesio",        masaAtomica: 132.91 },
+    Ba: { nombre: "Bario",        masaAtomica: 137.33 },
+    La: { nombre: "Lantano",      masaAtomica: 138.91 },
+    Ce: { nombre: "Cerio",        masaAtomica: 140.12 },
+    Pr: { nombre: "Praseodimio",  masaAtomica: 140.91 },
+    Nd: { nombre: "Neodimio",     masaAtomica: 144.24 },
+    Pm: { nombre: "Prometio",     masaAtomica: 145 },
+    Sm: { nombre: "Samario",      masaAtomica: 150.36 },
+    Eu: { nombre: "Europio",      masaAtomica: 151.96 },
+    Gd: { nombre: "Gadolinio",    masaAtomica: 157.25 },
+    Tb: { nombre: "Terbio",       masaAtomica: 158.93 },
+    Dy: { nombre: "Disprosio",    masaAtomica: 162.50 },
+    Ho: { nombre: "Holmio",       masaAtomica: 164.93 },
+    Er: { nombre: "Erbio",        masaAtomica: 167.26 },
+    Tm: { nombre: "Tulio",        masaAtomica: 168.93 },
+    Yb: { nombre: "Iterbio",      masaAtomica: 173.05 },
+    Lu: { nombre: "Lutecio",      masaAtomica: 174.97 },
+    Hf: { nombre: "Hafnio",       masaAtomica: 178.49 },
+    Ta: { nombre: "Tantalio",     masaAtomica: 180.95 },
+    W:  { nombre: "Wolframio",    masaAtomica: 183.84 },
+    Re: { nombre: "Renio",        masaAtomica: 186.21 },
+    Os: { nombre: "Osmio",        masaAtomica: 190.23 },
+    Ir: { nombre: "Iridio",       masaAtomica: 192.22 },
+    Pt: { nombre: "Platino",      masaAtomica: 195.08 },
+    Au: { nombre: "Oro",          masaAtomica: 196.97 },
+    Hg: { nombre: "Mercurio",     masaAtomica: 200.59 },
+    Tl: { nombre: "Talio",        masaAtomica: 204.38 },
+    Pb: { nombre: "Plomo",        masaAtomica: 207.2 },
+    Bi: { nombre: "Bismuto",      masaAtomica: 208.98 },
+    Po: { nombre: "Polonio",      masaAtomica: 209 },
+    At: { nombre: "Astato",       masaAtomica: 210 },
+    Rn: { nombre: "Radón",        masaAtomica: 222 },
+
+    // Período 7
+    Fr: { nombre: "Francio",      masaAtomica: 223 },
+    Ra: { nombre: "Radio",        masaAtomica: 226 },
+    Ac: { nombre: "Actinio",      masaAtomica: 227 },
+    Th: { nombre: "Torio",        masaAtomica: 232.04 },
+    Pa: { nombre: "Protactinio",  masaAtomica: 231.04 },
+    U:  { nombre: "Uranio",       masaAtomica: 238.03 },
+    Np: { nombre: "Neptunio",     masaAtomica: 237 },
+    Pu: { nombre: "Plutonio",     masaAtomica: 244 },
+    Am: { nombre: "Americio",     masaAtomica: 243 },
+    Cm: { nombre: "Curio",        masaAtomica: 247 },
+    Bk: { nombre: "Berkelio",     masaAtomica: 247 },
+    Cf: { nombre: "Californio",   masaAtomica: 251 },
+    Es: { nombre: "Einstenio",    masaAtomica: 252 },
+    Fm: { nombre: "Fermio",       masaAtomica: 257 },
+    Md: { nombre: "Mendelevio",   masaAtomica: 258 },
+    No: { nombre: "Nobelio",      masaAtomica: 259 },
+    Lr: { nombre: "Lawrencio",    masaAtomica: 266 },
+    Rf: { nombre: "Rutherfordio", masaAtomica: 267 },
+    Db: { nombre: "Dubnio",       masaAtomica: 268 },
+    Sg: { nombre: "Seaborgio",    masaAtomica: 269 },
+    Bh: { nombre: "Bohrio",       masaAtomica: 270 },
+    Hs: { nombre: "Hasio",        masaAtomica: 269 },
+    Mt: { nombre: "Meitnerio",    masaAtomica: 278 },
+    Ds: { nombre: "Darmstadtio",  masaAtomica: 281 },
+    Rg: { nombre: "Roentgenio",   masaAtomica: 282 },
+    Cn: { nombre: "Copernicio",   masaAtomica: 285 },
+    Nh: { nombre: "Nihonio",      masaAtomica: 286 },
+    Fl: { nombre: "Flerovio",     masaAtomica: 289 },
+    Mc: { nombre: "Moscovio",     masaAtomica: 290 },
+    Lv: { nombre: "Livermorio",   masaAtomica: 293 },
+    Ts: { nombre: "Teneso",       masaAtomica: 294 },
+    Og: { nombre: "Oganesón",     masaAtomica: 294 }
+};
+
+// Exportar para uso en otros módulos (si se usa ES6 modules)
+// export { ELEMENTOS };
